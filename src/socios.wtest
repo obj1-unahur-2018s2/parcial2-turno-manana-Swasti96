@@ -1,0 +1,78 @@
+import viajes.*
+import gimnasia.*
+import socios.*
+
+describe "group of tests" {
+	
+	var roque = new Socios()
+	var viaje1 = new ViajesDePlaya()
+	var viaje2 = new ViajesDePlaya()
+	var gim = new ClasesDeGim()
+	var socio1 = new SociosTranquilos()
+	var socio2 = new SociosRelajados()
+	var socio3 = new SociosCoherentes()
+	var gim1 = new ClasesDeGim()
+	var viaje = new ViajesDePlaya()
+	
+
+	fixture{
+		
+		viaje1.largoPlaya(1000)
+		viaje2.largoPlaya(2000)
+		roque.maximoDeActividades(2)
+		roque.registrarActividades(viaje1)
+		roque.registrarActividades(viaje2)
+		socio1.maximoDeActividades(4)
+		socio1.registrarActividades(viaje1)
+		socio1.registrarActividades(viaje2)
+		socio2.agregarIdiomas("Espaniol")
+		viaje2.agregarIdiomas("Espaniol")
+		socio3.maximoDeActividades(10)
+		socio3.registrarActividades(viaje1)
+		socio3.registrarActividades(viaje2)
+		socio3.edad(25)
+		socio2.edad(15)
+		viaje.agregarIdiomas("Latin")
+		
+		
+	}
+	
+	test "Prueba de Roque " {
+
+		assert.that(roque.esAdoradorDelSol())
+		assert.equals([viaje2],roque.actividadesForzada())
+
+	}
+	
+	test " Socio1 tranquilo no le atrae "{
+		
+		assert.notThat(socio1.leAtraeLaActividad(viaje1))
+	}
+	test " Socio2  relajado le atrae" { 
+		
+		assert.that(socio2.leAtraeLaActividad(viaje2))
+	}
+	test " Socio3 coherente le atrae"{
+		
+		assert.that(socio3.leAtraeLaActividad(viaje1))
+	}
+	
+	test "Error de Roque" { 
+		
+	assert.throwsException({roque.registrarActividades(gim)})
+	
+	assert.throwsExceptionWithMessage("Error,supera el limite",{roque.registrarActividades(gim)})
+ }
+ 
+ 	test "Recomendar socios" { 
+ 		
+ 		assert.that(gim1.recomendar(socio3))
+ 		assert.notThat(gim1.recomendar(socio2))
+ 	}
+ 	
+ 	test "Recomendar actividar "{
+ 		
+ 		assert.thaht(true)
+ 	}
+
+}

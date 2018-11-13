@@ -1,0 +1,83 @@
+import viajes.*
+describe "group of tests" {
+
+	var excursionNormal1 = new ExcursionACiudad()
+	var excursionTropical = new ExcursionesTropical()
+	var excursionNormal2 = new ExcursionACiudad()
+	var excursionTropical2 = new ExcursionesTropical()
+	var excursionTropical3 = new ExcursionesTropical()
+	var salida = new SalidaDeTrekking()
+	var salida2 = new SalidaDeTrekking()
+	var salida3 = new SalidaDeTrekking()
+	
+	fixture { 
+		
+		excursionNormal1.cantAtracciones(4)
+		excursionTropical.cantAtracciones(4)
+		excursionNormal2.cantAtracciones(8)
+		excursionTropical2.cantAtracciones(8)
+		excursionTropical3.cantAtracciones(10)
+		salida.kilometrosDeSendero(100)
+		salida.diasDeSolPorAnio(130)
+		salida2.kilometrosDeSendero(50)
+		salida2.diasDeSolPorAnio(240)
+		salida3.kilometrosDeSendero(250)
+		salida3.diasDeSolPorAnio(130)
+	}
+	
+	test "1- excursionNormal" {
+		
+		assert.equals(2,excursionNormal1.diasQueLlevaElViaje())
+		assert.notThat(excursionNormal1.implicaEsfuerzo())
+		assert.notThat(excursionNormal1.sirveParaBroncearse())
+	}
+	
+	test "2- excursionNormal "{
+		
+		assert.equals(3,excursionTropical.diasQueLlevaElViaje())
+		assert.notThat(excursionTropical.implicaEsfuerzo())
+		assert.that(excursionTropical.sirveParaBroncearse())
+	}
+	
+	test "3- excursionNormal "{
+		
+		assert.equals(4,excursionNormal2.diasQueLlevaElViaje())
+		assert.that(excursionNormal2.implicaEsfuerzo())
+		assert.notThat(excursionNormal2.sirveParaBroncearse())
+	}
+	
+	test "4- excursionTropical " { 
+		
+		assert.equals(5,excursionTropical2.diasQueLlevaElViaje())
+		assert.that(excursionTropical2.implicaEsfuerzo())
+		assert.that(excursionTropical2.sirveParaBroncearse())
+	}
+	
+	test "5- excursionTropical " {
+		
+		assert.equals(6,excursionTropical3.diasQueLlevaElViaje())
+		assert.notThat(excursionTropical3.implicaEsfuerzo())
+		assert.that(excursionTropical3.sirveParaBroncearse())
+	}
+	
+	test "6- salidaTrekking " {
+		
+		assert.equals(2,salida.diasQueLlevaElViaje())
+		assert.that(salida.implicaEsfuerzo())
+		assert.notThat(salida.sirveParaBroncearse())
+	}
+	
+	test "7- salidaTrekking " { 
+		
+		assert.equals(1,salida2.diasQueLlevaElViaje())
+		assert.notThat(salida2.implicaEsfuerzo())
+		assert.that(salida2.sirveParaBroncearse())
+	}
+	
+	test "8- salidaTrekking " { 
+		
+		assert.equals(5,salida3.diasQueLlevaElViaje())
+		assert.that(salida3.implicaEsfuerzo())
+		assert.that(salida3.sirveParaBroncearse())
+	}
+}
