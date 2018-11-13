@@ -33,7 +33,7 @@ describe "group of tests" {
 		socio3.edad(25)
 		socio2.edad(15)
 		viaje.agregarIdiomas("Latin")
-		
+		viaje.agregarIdiomas("Ruso")
 		
 	}
 	
@@ -72,7 +72,7 @@ describe "group of tests" {
  	
  	test "Recomendar actividar "{
  		
- 		assert.thaht(true)
+ 		assert.that(viaje.actividadRecomendada(socio3))
  	}
 
 }

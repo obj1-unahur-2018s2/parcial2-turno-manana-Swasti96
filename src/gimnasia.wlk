@@ -13,7 +13,7 @@ class ClasesDeGim {
 	method sirveParaBroncearse(){
 		return false
 	}
-	method actividadRecomendada(socio){
+	method recomendar(socio){
 		return socio.edad().between(20,30)
 	}
 }

@@ -17,7 +17,7 @@ class Viajes {
 	}
 	method actividadRecomendada(socio){
 		return self.esInteresante() and
-		socio.leAtreLaActividad(self) 	
+		socio.leAtraeLaActividad(self) 	
 	}
 }
 
